@@ -18,7 +18,7 @@
             <!-- 主要信息展示区域 -->
             <div class="login-box">
                 <!-- 用户名显示 -->
-                <div class="user_name" id="userName">liuxuyan23</div>
+                <div class="user_name">liuxuyan23</div>
                 <!-- 账户设置链接区域 -->
                 <div class="account-setting">
                     <p>自服务</p>
@@ -53,7 +53,7 @@
 
             <!-- 操作按钮区域 -->
             <div class="btn-box">
-                <button class="btn-logout" id="logoutBtn"></button>  <!-- 登出按钮 -->
+                <button class="btn-logout"></button>  <!-- 登出按钮 -->
             </div>
 
             <!-- 底部功能链接区域 -->
@@ -73,33 +73,5 @@
             </div>
         </section>
     </div>
-
-    <script>
-        // 页面加载时显示用户名
-        window.addEventListener('DOMContentLoaded', function() {
-            const userNameElement = document.getElementById('userName');
-            const currentUsername = localStorage.getItem('currentUsername');
-            
-            if (currentUsername) {
-                userNameElement.textContent = currentUsername;
-            }
-        });
-
-        // 断开连接按钮点击事件
-        document.getElementById('logoutBtn').addEventListener('click', function() {
-            // 清除localStorage中的用户名
-            localStorage.removeItem('currentUsername');
-            // 返回hw2页面
-            window.location.href = '../hw2/index.html';
-        });
-
-        // 底部链接点击事件
-        document.querySelectorAll('.link-item').forEach(item => {
-            item.addEventListener('click', function() {
-                const linkText = this.querySelector('p').textContent;
-                alert(`${linkText} 功能演示`);
-            });
-        });
-    </script>
 </body>
 </html>
