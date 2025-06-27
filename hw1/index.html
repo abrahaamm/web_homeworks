@@ -43,7 +43,22 @@
                         <p>Usage</p>
                     </div>
                     <div class="content_text">
-                        <span class="sum_bytes">1.2 GB</span>
+                        <!-- 进度条容器 - 放在数字背景处 -->
+                        <div class="progress-container">
+                            <!-- 数字标记 - 移到进度条上面 -->
+                            <div class="progress-markers">
+                                <span class="marker">20</span>
+                                <span class="marker">30</span>
+                                <span class="marker">40</span>
+                                <span class="marker">50</span>
+                            </div>
+                            <!-- 进度条背景 -->
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                                <!-- 流量数字覆盖在进度条上 -->
+                                <span class="sum_bytes">11.20 GB</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -75,31 +90,26 @@
     </div>
 
     <script>
-        // 页面加载时显示用户名
+        // 页面加载时更新进度条
         window.addEventListener('DOMContentLoaded', function() {
-            const userNameElement = document.getElementById('userName');
-            const currentUsername = localStorage.getItem('currentUsername');
+            // 更新进度条
+            updateProgressBar();
+        });
+
+        // 更新进度条函数
+        function updateProgressBar() {
+            const sumBytesElement = document.querySelector('.sum_bytes');
+            const progressFill = document.querySelector('.progress-fill');
             
-            if (currentUsername) {
-                userNameElement.textContent = currentUsername;
+            if (sumBytesElement && progressFill) {
+                const usageText = sumBytesElement.textContent;
+                const usageGB = parseFloat(usageText);
+                const maxGB = 50; // 最大50GB
+                const percentage = Math.min((usageGB / maxGB) * 100, 100);
+                
+                progressFill.style.width = percentage + '%';
             }
-        });
-
-        // 断开连接按钮点击事件
-        document.getElementById('logoutBtn').addEventListener('click', function() {
-            // 清除localStorage中的用户名
-            localStorage.removeItem('currentUsername');
-            // 返回hw2页面
-            window.location.href = '../hw2/index.html';
-        });
-
-        // 底部链接点击事件
-        document.querySelectorAll('.link-item').forEach(item => {
-            item.addEventListener('click', function() {
-                const linkText = this.querySelector('p').textContent;
-                alert(`${linkText} 功能演示`);
-            });
-        });
+        }
     </script>
 </body>
 </html>
