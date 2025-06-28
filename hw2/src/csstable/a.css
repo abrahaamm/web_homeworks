@@ -1,0 +1,331 @@
+body {
+    background: #DADBDC url(../images/background/background.png) repeat-x top;
+}
+
+#app .header {
+    height: 180px;
+    width: 768px;
+    margin: auto;
+}
+
+#app .header .logo {
+    float: left;
+    background: url(../images/logo/logo.gif) no-repeat;
+    margin: 16px 0 32px -48px
+}
+
+#app .header .logo .logo-img {
+    display: block;
+    margin: 15px 0 4px 43px;
+    width: 240px;
+    height: 72px;
+}
+
+#app .header .qr {
+    float: right;
+    margin-top: 30px;
+    text-align: center;
+}
+
+#app .header .qr .qr-img {
+    width: 100px;
+    height: 100px;
+}
+
+#app .header .qr p{
+    font-size: 12px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: #6E6F6F;
+}
+
+#app .section {
+    background: url(../images/tsinghua/content_shadow.png) no-repeat 0 400px;
+}
+
+#app .section .greet {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 720px;
+    height: 304px;
+    background: #93278F url(../images/tsinghua/greeting.png) no-repeat 32px 28px;
+    -webkit-box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0 0 4px rgba(0,0,0,0.1);
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+#app .section .triangle_greet {
+    position: absolute;
+    top: 304px;
+    left: 32px;
+    border-color: #93278F transparent;
+    border-width: 48px 48px 0 0;
+    border-style: solid;
+}
+
+#app .section .notice-box {
+    position: absolute;
+    top: 128px;
+    left: -16px;
+    width: 320px;
+    height: 172px;
+}
+
+#app .section .notice-box .corner {
+    width: 16px;
+    border-color: transparent #763880;
+    border-width: 16px 16px 0 0;
+    border-style: solid;
+}
+
+#app .section .notice-box .content {
+    position: relative;
+    width: 320px;
+    height: 160px;
+    background: #992995 url(../images/tsinghua/notice.png) no-repeat 14px 10px;
+    -webkit-box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0 0 4px rgba(0,0,0,0.1);
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+#app .section .login-box {
+    position: absolute;
+    top: 32px;
+    left: 304px;
+    width: 464px;
+    height: 304px;
+    background: #F2F2F2;
+    -webkit-box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0 0 4px rgba(0,0,0,0.1);
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    padding: 32px;
+}
+
+#app .section .login-box .english {
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+#app .section .login-box .input-box {
+    float: left;
+    margin-bottom: 16px;
+    width: 100%;
+}
+
+#app .section .login-box .input-box .input-label {
+    float: left;
+    height: 48px;
+    text-align: left;
+}
+
+#app .section .login-box .input-box .input-label p {
+    font-size: 21px;
+}
+
+#app .section .login-box .input-box .input-label .label-english {
+    font-size: 16px;
+    color: #303030;
+}
+
+#app .section .login-box .input-box input {
+    float: right;
+    width: 298px;
+    height: 48px;
+    border: #E6E6E6 solid 1px;
+    padding: 2px;
+    background: #FFF;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 34px;
+}
+
+#app .section .login-box .input-box input:hover {
+    border-color: #CCCCCC;
+}
+
+#app .section .login-box .input-box .instruction {
+    position: absolute;
+    top: 37px;
+    left: 142px;
+    font-size: 13px;
+    color: #999999;
+    float: right;
+    padding-left: 40px;
+    text-align: left;
+    background: url(../images/tsinghua/account.gif) no-repeat 0 0;
+}
+
+#app .section .login-box .input-box .instruction p {
+    font-size: 13px;
+}
+
+#app .section .login-box .domain {
+    width: auto;
+    height: 32px;
+    float: left;
+    margin-bottom: 16px;
+    margin-left: 50px;
+}
+
+#app .section .login-box .domain .input-domain {
+    float: left;
+    margin: 4px 4px 0 0;
+}
+
+#app .section .login-box .domain .label-domain {
+    color: #93278f;
+    font-weight: 600;
+    float: left;
+    text-align: left;
+}
+
+#app .section .login-box .domain .label-domain p {
+    font-size: 13px;
+}
+
+#app .section .login-box .input-box .instruction .english,
+#app .section .login-box .domain .label-domain .english {
+    font-size: 11px;
+}
+
+#app .section .login-box .btn-group .btn-login{
+    margin-top: 16px;
+    width: 398px;
+    height: 46px;
+    border: #9CB22E solid 1px;
+    background: #C0CE55 url(../images/tsinghua/connect.png) no-repeat center 0;
+}
+
+#app .section .triangle_login {
+    position: absolute;
+    top: 336px;
+    left: 688px;
+    border-color: #F2F2F2 transparent;
+    border-width: 48px 48px 0 0;
+    border-style: solid;
+}
+
+#app .section .download {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 304px;
+    height: 112px;
+    background: url(../images/tsinghua/download.png) no-repeat 0 8px;
+}
+
+#app .section .download .system {
+    position: absolute;
+    bottom: 0;
+    left: -16px;
+    width: 320px;
+    height: 48px;
+    background: #808080;
+    -webkit-box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0 0 4px rgba(0,0,0,0.1);
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+#app .section .download .system li a {
+    position: absolute;
+    bottom: 32px;
+    display: block;
+    padding-top: 36px;
+    float: left;
+    min-width: 37px;
+    height: 16px;
+    color: #FFF;
+    font-size: 13px;
+    font-family: Helvetica,Arial, sans-serif;
+}
+
+#app .section .download .system .windows {
+    left: 16px;
+    background: url(../images/tsinghua/windows.gif) no-repeat 2px 0;
+}
+#app .section .download .system .mac {
+    left: 80px;
+    background: url(../images/tsinghua/mac.gif) no-repeat 2px 0;
+}
+#app .section .download .system .linux {
+    left: 144px;
+    background: url(../images/tsinghua/linux.gif) no-repeat 2px 0;
+}
+#app .section .download .system .android {
+    left: 207px;
+    background: url(../images/tsinghua/android.gif) no-repeat 2px 0;
+}
+#app .section .download .system .ios {
+    left: 271px;
+    background: url(../images/tsinghua/ios.gif) no-repeat 2px 0;
+}
+
+#app .section .widget {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 464px;
+    height: 32px;
+}
+
+#app .section .widget li {
+    float: left;
+    padding-left: 36px;
+    font-size: 12px;
+    color: #000;
+    text-align: left;
+}
+
+#app .section .widget li a {
+    color: #000000;
+    font-size: 12px;
+}
+
+#app .section .widget .english {
+    font-size: 11px;
+    color: #4F4F4F;
+}
+
+#app .section .widget .bookmark {
+    background: url(../images/tsinghua/bookmark.gif) no-repeat 8px 0;
+}
+
+#app .section .widget .help {
+    background: url(../images/tsinghua/help.gif) no-repeat 5px 0;
+}
+
+#app .section .widget .contact {
+    float: right;
+    background: url(../images/tsinghua/contact.gif) no-repeat 5px 0;
+}
+
+#app .section .widget .contact .title {
+    float: left;
+    font-size: 12px;
+    color: #000;
+}
+
+#app .section .widget .contact .detail {
+    float: left;
+    margin: 2px 0 0 8px;
+    line-height: 1.3;
+}
+
+#app .section .widget .contact a {
+    display: block;
+    color: #4F4F4F;
+}
+
+#app .footer {
+    background: none;
+    color: #6E6F6F;
+    box-shadow: none;
+    width: 768px;
+    text-align: right;
+    font-size: 12px;
+    margin: auto;
+    padding-top: 64px;
+}
+
+#app .footer .english {
+    font-size: 11px;
+}

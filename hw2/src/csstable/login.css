@@ -1,13 +1,16 @@
+/* 页面基础样式 */
 body {
     background: #DADBDC url(../source/background.png) repeat-x top;
 }
 
+/* 页面头部区域 */
 #app .header {
     height: 180px;
     width: 768px;
     margin: auto;
 }
 
+/* 头部logo区域 */
 #app .header .logo {
     float: left;
     background: url(../source/logo.gif) no-repeat;
@@ -21,6 +24,7 @@ body {
     height: 72px;
 }
 
+/* 头部二维码区域 */
 #app .header .qr {
     float: right;
     margin-top: 30px;
@@ -39,46 +43,57 @@ body {
     color: #6E6F6F;
 }
 
+/* 主要内容区域 */
 #app .section {
-    background: url(../source/content_shadow.png) no-repeat 0 400px;
+    background: url(../source/content_shadow.png) no-repeat 260px 450px;
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
+/* 问候区域 */
 #app .section .greet {
-    position: absolute;
-    top: 180px;
-    left: 450px;
-    width: 720px;
+    position: relative;
+    width: 60%;
     height: 304px;
     background: #93278F url(../source/greeting.png) no-repeat 32px 28px;
     -webkit-box-shadow: 0 0 8px rgba(0,0,0,0.1);
     -moz-box-shadow: 0 0 4px rgba(0,0,0,0.1);
     box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    margin: 20px auto;
 }
 
+/* 问候区域三角形装饰 */
 #app .section .triangle_greet {
-    position: absolute;
-    top: 483px;
-    left: 500px;
+    position: relative;
     border-color: #93278F transparent;
     border-width: 48px 48px 0 0;
     border-style: solid;
+    margin: 0 auto;
+    width: 0;
+    transform: translateX(-300px) translateY(-10px);
 }
 
+/* 通知区域 */
 #app .section .notice-box {
-    position: absolute;
-    top: 300px;
-    left: 435px;
+    position: relative;
     width: 320px;
     height: 82px;
+    margin: 20px auto;
 }
 
+/* 通知区域角落装饰 */
 #app .section .notice-box .corner {
     width: 0;
     border-color: #763880 transparent;
     border-width: 0 0 16px 16px;
     border-style: solid;
+    transform: translateX(-216px) translateY(-260px);
 }
 
+/* 通知内容区域 */
 #app .section .notice-box .content {
     position: relative;
     width: 320px;
@@ -88,12 +103,12 @@ body {
     -webkit-box-shadow: 0 0 8px rgba(0,0,0,0.1);
     -moz-box-shadow: 0 0 4px rgba(0,0,0,0.1);
     box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    transform: translateX(-216px) translateY(-260px);
 }
 
+/* 登录框区域 */
 #app .section .login-box {
-    position: absolute;
-    top: 210px;
-    left: 763px;
+    position: relative;
     width: 404px;
     height: 240px;
     background: #F2F2F2;
@@ -101,18 +116,23 @@ body {
     -moz-box-shadow: 0 0 4px rgba(0,0,0,0.1);
     box-shadow: 0 0 8px rgba(0,0,0,0.1);
     padding: 32px;
+    margin: 20px auto;
+    transform: translateX(180px) translateY(-450px);
 }
 
+/* 英文文字样式 */
 #app .section .login-box .english {
     font-family: Verdana, Geneva, sans-serif;
 }
 
+/* 输入框容器 */
 #app .section .login-box .input-box {
     float: left;
     margin-bottom: 16px;
     width: 100%;
 }
 
+/* 输入框标签 */
 #app .section .login-box .input-box .input-label {
     float: left;
     height: 48px;
@@ -132,6 +152,7 @@ body {
     margin-top: 2px;
 }
 
+/* 输入框样式 */
 #app .section .login-box .input-box input {
     float: right;
     width: 298px;
@@ -147,6 +168,7 @@ body {
     border-color: #CCCCCC;
 }
 
+/* 输入提示文字 */
 #app .section .login-box .input-box .instruction {
     position: absolute;
     top: 37px;
@@ -162,6 +184,7 @@ body {
     transition: opacity 0.3s ease;
 }
 
+/* 隐藏提示文字 */
 #app .section .login-box .input-box .instruction.hidden {
     opacity: 0;
     visibility: hidden;
@@ -174,6 +197,7 @@ body {
     margin-top: -3px;
 }
 
+/* 域名选择区域 */
 #app .section .login-box .domain {
     width: auto;
     height: 32px;
@@ -200,12 +224,14 @@ body {
     margin-top: -3px;
 }
 
+/* 英文标签样式 */
 #app .section .login-box .input-box .instruction .english,
 #app .section .login-box .domain .label-domain .english {
     font-size: 11px;
     margin-top: 1px;
 }
 
+/* 登录按钮 */
 #app .section .login-box .btn-group .btn-login{
     margin-top: 16px;
     width: 398px;
@@ -214,36 +240,50 @@ body {
     background: #C0CE55 url(../source/connect.png) no-repeat center 0;
 }
 
+/* 登录框三角形装饰 */
 #app .section .triangle_login {
-    position: absolute;
-    top: 510px;
-    left: 1128px;
+    position: relative;
     border-color: #F2F2F2 transparent;
     border-width: 48px 48px 0 0;
     border-style: solid;
+    margin: 0 auto;
+    width: 0;
+    transform: translateX(350px) translateY(-470px);
 }
 
-#app .section .download {
-    position: absolute;
-    bottom: 230px;
-    left: 470px;
+/* 下载图标区域（独立） */
+#app .section .download-icon {
+    position: relative;
     width: 304px;
     height: 112px;
-    background: url(../source/download.png) no-repeat 0 8px;
+    background: url(../source/download.png) no-repeat 0px 0px;
+    margin: 20px auto;
+    transform: translateX(-208px) translateY(-500px);
 }
 
+/* 下载区域容器 */
+#app .section .download {
+    position: relative;
+    width: 304px;
+    height: 112px;
+    margin: 20px auto;
+    transform: translateY(-120px);
+}
+
+/* 系统选择区域 */
 #app .section .download .system {
-    position: absolute;
-    bottom: 0;
-    left: -16px;
+    position: relative;
     width: 320px;
     height: 48px;
     background: #808080;
     -webkit-box-shadow: 0 0 8px rgba(0,0,0,0.1);
     -moz-box-shadow: 0 0 4px rgba(0,0,0,0.1);
     box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    margin: 0 auto;
+    transform: translateY(-450px) translateX(-220px);
 }
 
+/* 系统图标链接样式 */
 #app .section .download .system li a {
     position: absolute;
     bottom: 32px;
@@ -257,6 +297,7 @@ body {
     font-family: Helvetica,Arial, sans-serif;
 }
 
+/* 各系统图标位置 */
 #app .section .download .system a.windows {
     left: 10px;
     top: -20px;
@@ -283,14 +324,19 @@ body {
     background: url(../source/ios.gif) no-repeat;
 }
 
+/* 底部工具区域 */
 #app .section .widget {
-    position: absolute;
-    bottom: 240px;
-    left: 0;
+    position: relative;
     width: 464px;
     height: 32px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-680px) translateX(100px);
 }
 
+/* 移除列表标记 */
 #app .section .download .system li {
     list-style: none;
 }
@@ -303,34 +349,38 @@ body {
     color: #4F4F4F;
 }
 
+#app .section .widget li::marker{
+    display: none;
+}
+
+/* 书签工具 */
 #app .section .widget .bookmark {
-    position: absolute;
-    top: 0;
-    left: 780px;
+    position: relative;
     background: url(../source/bookmark.gif) no-repeat;
     padding-left: 36px;
     font-size: 12px;
     color: #000;
+    margin: 0 20px;
 }
 
+/* 帮助工具 */
 #app .section .widget .help {
-    position: absolute;
-    top: 0;
-    left: 920px;
+    position: relative;
     background: url(../source/help.gif) no-repeat;
     padding-left: 36px;
     font-size: 12px;
     color: #000;
+    margin: 0 20px;
 }
 
+/* 联系工具 */
 #app .section .widget .contact {
-    position: absolute;
-    top: 0;
-    left: 1060px;
+    position: relative;
     background: url(../source/contact.gif) no-repeat;
     padding-left: 36px;
     font-size: 12px;
     color: #000;
+    margin: 0 20px;
 }
 
 #app .section .widget .contact .title {
@@ -349,12 +399,6 @@ body {
     display: block;
     color: #4F4F4F;
 }
-#app .section .widget li {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
 #app .section .widget li a {
     display: block;
     line-height: 1.2;
@@ -366,24 +410,23 @@ body {
     margin-top: 2px; 
 }
 
+/* 联系方式信息 */
 #app .section #tel_mail {
-    position: absolute;
-    bottom: 275px;
-    margin-bottom: -10px;
-    left: 1120px;
+    position: relative;
     width: 464px;
     height: 16px;
     padding-left: 36px;
     font-size: 10px;
     color: #000;
     line-height: 0.8;
+    margin: 20px auto;
+    text-align: left;
+    transform: translateY(-730px) translateX(530px);
 }
 
+/* 签名信息 */
 #app .section #signature {
-    position: absolute;
-    bottom: 200px;
-    margin-bottom: -10px;
-    left: 750px;
+    position: relative;
     width: 464px;
     height: 16px;
     padding-left: 36px;
@@ -391,4 +434,6 @@ body {
     color: #000;
     line-height: 0.8;
     text-align: right;
+    margin: 20px auto;
+    transform: translateY(-670px) translateX(150px);
 } 

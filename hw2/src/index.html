@@ -4,17 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>清华大学校园网</title>
-    <link rel="stylesheet" href="src/csstable/custom.css">
+    <link rel="stylesheet" href="csstable/login.css">
+    <style>
+        .widget li {
+            list-style: none !important;
+        }
+        .widget li::marker {
+            display: none !important;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
         <!-- Header区域 -->
         <div class="header">
             <div class="logo">
-                <img src="src/source/title.png" alt="清华大学网络认证系统" class="logo-img">
+                <img src="source/title.png" alt="清华大学网络认证系统" class="logo-img">
             </div>
             <div class="qr">
-                <img src="src/source/qr.jpg" alt="二维码" class="qr-img">
+                <img src="source/qr.jpg" alt="二维码" class="qr-img">
                 <p>欢迎关注"清华大学信息服务"</p>
             </div>
         </div>
@@ -63,7 +71,8 @@
                     <input type="checkbox" name="domain" value="internet" class="input-domain" id="internet" checked>
                     <div class="label-domain">
                         <p>访问校外（IPv4）网络</p>
-                        <p class="english">Access to the Internet(IPv4)</p>
+                        <p class="english">Access to the Internet</p>
+                        <p class="english">(IPv4)</p>
                     </div>
                 </div>
 
@@ -75,6 +84,7 @@
             <div class="triangle_login"></div>
 
             <!-- 下载区域 -->
+            <div class="download-icon"></div>
             <div class="download">
                 <div class="system">
                     <li>
@@ -107,7 +117,7 @@
                 </li>
                 <li class="contact">    
                     <a>联系</a>
-                    <a class="english">Contact Us</a>
+                    <a class="english">Contact</a>
                 </li>
             </div>
             <div id="tel_mail">
@@ -141,28 +151,10 @@
             // 将用户名存储到localStorage中
             localStorage.setItem('currentUsername', username);
             // 跳转到作业一页面
-            window.location.href = '../hw1/index.html';
+            window.location.href = 'hw1/index_success.html';
         } else {
             alert('请输入用户名和密码');
         }
-    });
-
-    // 下载链接点击事件
-    document.querySelectorAll('.download .system a').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const system = this.textContent;
-            alert(`下载 ${system} 客户端`);
-        });
-    });
-
-    // 小工具链接点击事件
-    document.querySelectorAll('.widget a').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const text = this.textContent;
-            alert(`${text} 功能演示`);
-        });
     });
     </script>
 </body>

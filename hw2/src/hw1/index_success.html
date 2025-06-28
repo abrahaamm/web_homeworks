@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网络认证系统 - 登录成功</title>
+    <link rel="stylesheet" href="csstable/login_success.css">
+
+</head>
+<body class="main-variant">
+    <div id="app">
+        <section class="section">
+            <!-- 问候区域 - 包含背景图片和三角形装饰 -->
+            <div class="greet">
+                <div class="triangle_greet"></div>
+            </div>
+
+            <!-- 主要信息展示区域 -->
+            <div class="login-box">
+                <!-- 用户名显示 -->
+                <div class="user_name" id="userName">liuxuyan23</div>
+                <!-- 账户设置链接区域 -->
+                <div class="account-setting">
+                    <p>自服务</p>
+                    <p class="english">Account Settings</p>
+                </div>
+                
+                <!-- 连接时长信息 -->
+                <div class="info-content">
+                    <div class="label_text">
+                        <p>已连接</p>
+                        <p>Duration</p>
+                    </div>
+                    <div class="content_text">
+                        <span class="online_time">01:01:01</span>
+                    </div>
+                </div>
+                
+                <!-- 流量使用信息 -->
+                <div class="info-content">
+                    <div class="label_text">
+                        <p>已用流量</p>
+                        <p>Usage</p>
+                    </div>
+                    <div class="content_text">
+                        <!-- 进度条容器 - 放在数字背景处 -->
+                        <div class="progress-container">
+                            <!-- 数字标记 - 移到进度条上面 -->
+                            <div class="progress-markers">
+                                <span class="marker">20</span>
+                                <span class="marker">30</span>
+                                <span class="marker">40</span>
+                                <span class="marker">50</span>
+                            </div>
+                            <!-- 进度条背景 -->
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                                <!-- 流量数字覆盖在进度条上 -->
+                                <span class="sum_bytes">11.20 GB</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 装饰性边角元素 -->
+            <div class="corner"></div>
+
+            <!-- 操作按钮区域 -->
+            <div class="btn-box">
+                <button class="btn-logout" id="logoutBtn"></button>  <!-- 登出按钮 -->
+            </div>
+
+            <!-- 底部功能链接区域 -->
+            <div class="link">
+                <div class="link-item">
+                    <p>Info</p>      <!-- 信息中心链接 -->
+                </div>
+                <div class="link-item">
+                    <p>Lib</p>       <!-- 图书馆链接 -->
+                </div>
+                <div class="link-item">
+                    <p>Learn</p>     <!-- 学习平台链接 -->
+                </div>
+                <div class="link-item">
+                    <p>Mail</p>      <!-- 邮箱系统链接 -->
+                </div>
+            </div>
+        </section>
+    </div>
+<script>
+    // 页面加载时显示用户名和更新进度条
+    window.addEventListener('DOMContentLoaded', function() {
+        // 显示用户名
+        const userNameElement = document.getElementById('userName');
+        const currentUsername = localStorage.getItem('currentUsername');
+        
+        if (currentUsername) {
+            userNameElement.textContent = currentUsername;
+        }
+        
+        // 更新进度条
+        updateProgressBar();
+    });
+
+    // 更新进度条函数
+    function updateProgressBar() {
+        const sumBytesElement = document.querySelector('.sum_bytes');
+        const progressFill = document.querySelector('.progress-fill');
+        
+        if (sumBytesElement && progressFill) {
+            const usageText = sumBytesElement.textContent;
+            const usageGB = parseFloat(usageText);
+            const maxGB = 50; // 最大50GB
+            const percentage = Math.min((usageGB / maxGB) * 100, 100);
+            
+            progressFill.style.width = percentage + '%';
+        }
+    }
+
+    //登出按钮
+    document.querySelector('.btn-logout').addEventListener('click', function() {
+        // 清除localStorage中的用户名
+        localStorage.removeItem('currentUsername');
+        window.location.href = '../index.html';
+    });
+</script>
+
+</html>
