@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>清华大学校园网</title>
+    <link rel="stylesheet" href="csstable/login.css">
+    <style>
+        .widget li {
+            list-style: none !important;
+        }
+        .widget li::marker {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- Header区域 -->
+        <div class="header">
+            <div class="logo">
+                <img src="source/title.png" alt="清华大学网络认证系统" class="logo-img">
+            </div>
+            <div class="qr">
+                <img src="source/qr.jpg" alt="二维码" class="qr-img">
+                <p>欢迎关注"清华大学信息服务"</p>
+            </div>
+        </div>
+
+        <!-- Section主要内容区域 -->
+        <div class="section">
+            <!-- 问候区域 -->
+            <div class="greet"></div>
+            <div class="triangle_greet"></div>
+
+            <!-- 通知区域 -->
+            <div class="notice-box">
+                <div class="corner"></div>
+                <div class="content">
+                    <h3 style="color: white; margin-bottom: 15px; font-size: 16px;">网络通知</h3>
+                    <p style="color: white; font-size: 12px; line-height: 1.4;">
+                        欢迎使用清华大学网络认证系统<br>
+                        请选择您需要的网络服务类型
+                    </p>
+                </div>
+            </div>
+
+            <!-- 登录区域 -->
+            <div class="login-box">
+                <div class="input-box">
+                    <div class="input-label">
+                        <p>用户名</p>
+                        <p class="label-english english">User ID</p>
+                    </div>
+                    <input type="text" name="username" placeholder="">
+                    <div class="instruction" id="accountInstruction">
+                        <span>校园网账户</span>
+                        <span class="english">Account of Tsinghua University Network</span>
+                    </div>
+                </div>
+
+                <div class="input-box">
+                    <div class="input-label">
+                        <p>密码</p>
+                        <p class="label-english english">Password</p>
+                    </div>
+                    <input type="password" name="password" placeholder="">
+                </div>
+
+                <div class="domain">
+                    <input type="checkbox" name="domain" value="internet" class="input-domain" id="internet" checked>
+                    <div class="label-domain">
+                        <p>访问校外（IPv4）网络</p>
+                        <p class="english">Access to the Internet</p>
+                        <p class="english">(IPv4)</p>
+                    </div>
+                </div>
+
+
+                <div class="btn-group">
+                    <button class="btn-login"></button>
+                </div>
+            </div>
+            <div class="triangle_login"></div>
+
+            <!-- 下载区域 -->
+            <div class="download-icon"></div>
+            <div class="download">
+                <div class="system">
+                    <li>
+                        <a class="windows">Windows</a>
+                    </li>
+                    <li>
+                        <a class="macos">MacOS</a>
+                    </li>
+                    <li>
+                        <a class="linux">Linux</a>
+                    </li>
+                    <li>
+                        <a class="android">Android</a>
+                    </li>
+                    <li>
+                        <a class="ios">iOS</a>
+                    </li>
+                </div>
+            </div>
+
+            <!-- 底部小工具区域 -->
+            <div class="widget">
+                <li class="bookmark">            
+                    <a>收藏</a>
+                    <a class="english">Bookmark</a> 
+                </li>   
+                <li class="help">
+                    <a>帮助</a>
+                    <a class="english">Help</a>
+                </li>
+                <li class="contact">    
+                    <a>联系</a>
+                    <a class="english">Contact</a>
+                </li>
+            </div>
+            <div id="tel_mail">
+                <p>+86-10-62784859</p>
+                <p>its@tsinghua.edu.cn</p>
+            </div>
+
+            <div id="signature">
+                <p>清华大学信息化技术中心</p>
+                <p class="english">Information Technology Center of Tsinghua University</p>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        // 获取元素
+        
+
+        const usernameInput = document.querySelector('input[name="username"]');
+        const accountInstruction = document.getElementById('accountInstruction');
+
+        // 点击输入框时隐藏instruction，之后不再显示
+        usernameInput.addEventListener('focus', function() {
+            accountInstruction.classList.add('hidden');
+        });
+
+        document.querySelector('.btn-login').addEventListener('click', function() {
+        const username = document.querySelector('input[name="username"]').value;
+        const password = document.querySelector('input[name="password"]').value;
+        const domain = document.querySelector('input[name="domain"]:checked').value;
+        
+        
+
+        if (username && password) {
+            const registered = JSON.parse(localStorage.getItem('registeredUsers') || '{}');
+
+            if (registered[username]) {
+                if (registered[username] === password) {
+                    localStorage.setItem('currentUsername', username);
+                    window.location.href = 'hw1/index_success.html';
+                } else {
+                    alert('密码错误');
+                }
+            } else {
+                registered[username] = password;
+                localStorage.setItem('registeredUsers', JSON.stringify(registered));
+                localStorage.setItem('currentUsername', username);
+                window.location.href = 'hw1/index_success.html';
+            }
+        } else {
+            alert('请输入用户名和密码');
+        }
+    });
+    </script>
+</body>
+</html>

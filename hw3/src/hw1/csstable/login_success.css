@@ -1,0 +1,393 @@
+/* 页面主体样式 - 设置背景颜色和背景图片 */
+body {
+    background: #E6E6E6 url(../source/popup_bg.png) no-repeat top right;
+}
+
+/* 主变体的body样式 - 使用不同的背景图片路径 */
+body.main-variant {
+    background: #E6E6E6 url(../source/popup_bg.png) no-repeat top right;
+}
+
+/* 隐藏应用头部 */
+#app .header {
+    display: none;
+}
+
+/* 主内容区域 - 设置容器尺寸和阴影 */
+#app .section {
+    position: relative;
+    width: 640px;
+    height: 480px;
+    margin: 0 auto;
+    background: url(../source/popup_shadow.png) no-repeat 48px 344px;
+}
+
+.main-variant #app .section {
+    background: url(../source/popup_shadow.png) no-repeat 48px 344px;
+}
+
+/* 问候区域 - 左侧紫色背景区域 */
+#app .section .greet {
+    position: absolute;
+    top: 64px;
+    left: 48px;
+    width: 512px;
+    height: 224px;
+    background: #93278F url(../source/popup_greeting.png) no-repeat 30px 46px;
+}
+
+.main-variant #app .section .greet {
+    background: #93278F url(../source/popup_greeting.png) no-repeat 30px 46px;
+}
+
+/* 问候区域的三角形装饰 */
+#app .section .triangle_greet {
+    position: absolute;
+    left: 80px;
+    top: 288px;
+    border-color: #93278F transparent;
+    border-width: 48px 48px 0 0;
+    border-style: solid;
+}
+
+.main-variant #app .section .triangle_greet {
+    left: 30px;
+    top: 220px;
+}
+
+/* 登录信息框 - 右侧灰色背景区域 */
+#app .section .login-box {
+    position: absolute;
+    top: 96px;
+    left: 176px;
+    padding: 32px;
+    width: 416px;
+    height: 272px;
+    background: #F2F2F2;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.main-variant #app .section .login-box {
+    width: 352px;
+    height: 205px;
+}
+
+/* 用户名样式 */
+#app .section .login-box .user_name {
+    float: left;
+    color: #93278F;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 34px;
+    font-weight: lighter;
+}
+
+/* 账户设置区域 - 包含账户图标和链接 */
+#app .section .login-box .account-setting {
+    float: left;
+    margin: 8px 0 0 16px;
+    line-height: 1.1;
+    font-size: 13px;
+    padding-left: 40px;
+    background: url(../source/account.gif) no-repeat 0 0;
+    text-align: left;
+    color: #763880;
+}
+
+.main-variant #app .section .login-box .account-setting {
+    margin: 4px 0 0 16px;
+    background: url(../source/account.gif) no-repeat 0 0;
+}
+
+#app .section .login-box .account-setting a {
+    color: #763880;
+}
+
+#app .section .login-box .account-setting p {
+    font-size: 11px;
+    margin: 0;
+    line-height: 1.1;
+}
+
+.main-variant #app .section .login-box .account-setting p:first-child {
+    font-size: 13px;
+    margin-bottom: 2px;
+}
+
+#app .section .login-box .info-content .label_text {
+    clear: left;
+    float: left;
+    width: 56px;
+    height: 32px;
+    margin-top: 22px;
+    text-align: right;
+    font-size: 13px;
+    line-height: 1.2;
+}
+
+.main-variant #app .section .login-box .info-content .label_text {
+    margin-top: 16px;
+}
+
+#app .section .login-box .info-content .label_text p {
+    font-size: 13px;
+    color: #303030;
+    margin: 0;
+    line-height: 1.2;
+}
+
+#app .section .login-box .info-content .content_text {
+    float: left;
+    margin: 24px 0 0 20px;
+    padding-top: 4px;
+    height: 28px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: lighter;
+}
+
+.main-variant #app .section .login-box .info-content .content_text {
+    margin: 16px 0 0 20px;
+}
+
+#app .section .login-box .info-content .content_text .online_time {
+    color: #ec6677;
+    font-size: 28px;
+}
+
+#app .section .corner {
+    position: absolute;
+    top: 288px;
+    left: 592px;
+    border-color: transparent #CCCCCC;
+    border-width: 16px 0 0 16px;
+    border-style: solid;
+}
+
+/* 按钮区域 - 包含登出按钮 */
+#app .section .btn-box {
+    position: absolute;
+    top: 304px;
+    right: 32px;
+    width: 208px;
+    height: 80px;
+    background: #FFFFFF;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+/* 登出按钮样式 */
+#app .section .btn-box .btn-logout{
+    margin: 16px;
+    width: 174px;
+    height: 46px;
+    border: #B2AABE solid 1px;
+    border-radius: 0;
+    background: #C0BDCC url(../source/disconnect.png) no-repeat center 0;
+    cursor: pointer;
+}
+
+.main-variant #app .section .btn-box .btn-logout {
+    background: #C0BDCC url(../source/disconnect.png) no-repeat center 0;
+}
+
+/* 警告信息区域 - 默认隐藏 */
+#app .section .warning {
+    display: none;
+    position: absolute;
+    left: 48px;
+    bottom: 32px;
+    width: 320px;
+    text-indent: -14px;
+    font-size: 12px;
+    color: #666;
+    text-align: left;
+}
+
+.main-variant #app .section .warning {
+    display: block;
+}
+
+#app .section .warning span {
+    padding-right: 4px;
+    font-size: 14px;
+    font-family: Verdana, Geneva, sans-serif;
+    color: #999999;
+}
+
+#app .section .warning a {
+    font-size: 12px;
+    color: #763880;
+}
+
+/* 底部链接区域 */
+#app .section .link {
+    position: absolute;
+    bottom: 32px;
+    right: 32px;
+    width: 243px;
+}
+
+#app .section .link li {
+    float: left;
+    margin-right: 12px;
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+#app .section .link li:last-child {
+    margin-right: 0;
+}
+
+#app .section .link li a {
+    font-size: 11px;
+    color: #763880;
+    height: 16px;
+    padding: 18px 0 0 26px;
+    display: block;
+}
+
+#app .section .link li:hover a {
+    color: #93278F;
+}
+
+.main-variant #app .section .link .link-item {
+    float: left;
+    margin-right: 12px;
+    font-family: Verdana, Geneva, sans-serif;
+    cursor: pointer;
+}
+
+.main-variant #app .section .link .link-item:last-child {
+    margin-right: 0;
+}
+
+.main-variant #app .section .link .link-item p {
+    font-size: 11px;
+    color: #763880;
+    height: 16px;
+    padding: 18px 0 0 26px;
+    margin: 0;
+}
+
+.main-variant #app .section .link .link-item:hover p {
+    color: #93278F;
+}
+
+/* 各个功能链接的背景图标 */
+/* 信息链接图标 */
+#app .section .link #link_info {
+    background: url(../source/popup_info.gif) no-repeat 2px 2px;
+}
+
+/* 图书馆链接图标 */
+#app .section .link #link_lib {
+    background: url(../source/popup_lib.gif) no-repeat 2px 2px;
+}
+
+/* 学习链接图标 */
+#app .section .link #link_learn {
+    background: url(../source/popup_learn.gif) no-repeat 2px 2px;
+}
+
+/* 邮件链接图标 */
+#app .section .link #link_mail {
+    background: url(../source/popup_mail.gif) no-repeat 2px 2px;
+}
+
+.main-variant #app .section .link .link-item:nth-child(1) p {
+    background: url(../source/popup_info.gif) no-repeat 2px 2px;
+}
+
+.main-variant #app .section .link .link-item:nth-child(2) p {
+    background: url(../source/popup_lib.gif) no-repeat 2px 2px;
+}
+
+.main-variant #app .section .link .link-item:nth-child(3) p {
+    background: url(../source/popup_learn.gif) no-repeat 2px 2px;
+}
+
+.main-variant #app .section .link .link-item:nth-child(4) p {
+    background: url(../source/popup_mail.gif) no-repeat 2px 2px;
+}
+
+/* 隐藏应用底部 */
+#app .footer {
+    display: none;
+}
+
+/* 进度条容器样式 */
+.progress-container {
+    margin-top: -15px;
+    width: 200px;
+    position: relative;
+}
+
+.progress-markers {
+    position: relative;
+    width: 100%;
+    height: 20px;
+    margin-bottom: 4px;
+}
+
+/* 数字标记样式 */
+.progress-markers .marker {
+    position: absolute;
+    font-size: 10px;
+    color: #666;
+    transform: translateX(-50%);
+}
+
+.progress-markers .marker:nth-child(1) {
+    left: 40%;
+}
+
+.progress-markers .marker:nth-child(2) {
+    left: 60%;
+}
+
+.progress-markers .marker:nth-child(3) {
+    left: 80%;
+}
+
+.progress-markers .marker:nth-child(4) {
+    left: 100%;
+}
+
+/* 进度条背景 */
+.progress-bar {
+    position: relative;
+    width: 100%;
+    height: 32px;
+    background: linear-gradient(to right, 
+        #E0E0E0 0%, #E0E0E0 20%,
+        #D0D0D0 20%, #D0D0D0 40%,
+        #C0C0C0 40%, #C0C0C0 60%,
+        #B0B0B0 60%, #B0B0B0 80%,
+        #A0A0A0 80%, #A0A0A0 100%);
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 10px;
+}
+
+/* 进度条填充 - 改为黄色 */
+.progress-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 22.4%;
+    background: linear-gradient(to right, #FFD700, #FFA500);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+/* 流量数字样式 - 覆盖在进度条上，放在最左侧 */
+.progress-bar .sum_bytes {
+    position: relative;
+    z-index: 2;
+    color: #5C5C5C;
+    font-size: 28px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: lighter;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+}

@@ -32,7 +32,7 @@
                         <p>Duration</p>
                     </div>
                     <div class="content_text">
-                        <span class="online_time">01:01:01</span>
+                        <span class="online_time">00:00:00</span>
                     </div>
                 </div>
                 
@@ -89,6 +89,10 @@
         </section>
     </div>
 <script>
+    // 时间更新相关变量 - 在函数调用之前声明
+    let startTime = Date.now();
+    let timeInterval;
+
     // 页面加载时显示用户名和更新进度条
     window.addEventListener('DOMContentLoaded', function() {
         // 显示用户名
@@ -106,6 +110,29 @@
         timeUpdate();
     });
 
+    // 时间更新函数
+    function computeTime(){
+        const currentTime=Date.now();
+        const passedTime=currentTime-startTime;
+        const hours=Math.floor(passedTime/(1000*60*60));
+        const minutes=Math.floor((passedTime%(1000*60*60))/(1000*60));
+        const seconds=Math.floor((passedTime-hours*(1000*60*60)-minutes*(1000*60))/1000);
+
+        const Time =String(hours).padStart(2,'0')+':'+String(minutes).padStart(2,'0')+':'+String(seconds).padStart(2,'0');
+        
+        // 在函数内部重新获取元素
+        const timeElement = document.querySelector('.online_time');
+        if(timeElement){
+            timeElement.textContent=Time;
+        }
+    }
+    function timeUpdate(){
+        const timeElement=document.querySelector('.online_time');
+        if(timeElement){
+            timeElement.textContent='00:00:00';
+        }   
+        timeInterval = setInterval(computeTime, 1000);
+    }
     // 更新进度条函数
     function updateProgressBar() {
         const sumBytesElement = document.querySelector('.sum_bytes');
@@ -123,7 +150,11 @@
 
     //登出按钮
     document.querySelector('.btn-logout').addEventListener('click', function() {
-        // 清除localStorage中的用户名
+        // 清除定时器
+        if (timeInterval) {
+            clearInterval(timeInterval);
+        }
+        // 清除localStorage中的当前用户名（但保留注册用户信息）
         localStorage.removeItem('currentUsername');
         window.location.href = '../index.html';
     });
