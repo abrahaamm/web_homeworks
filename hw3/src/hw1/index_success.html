@@ -89,13 +89,19 @@
         </section>
     </div>
 <script>
-    // 时间更新相关变量 - 在函数调用之前声明
-    let startTime = Date.now();
-    let timeInterval;
+    // ==================== 全局变量定义 ====================
+    let startTime = Date.now();                    // 页面加载开始时间
+    let timeInterval;                              // 时间更新定时器
+    let trafficInterval;                           // 流量统计定时器
+    
+    // 从localStorage获取流量使用数据，格式：{ "用户名": 流量值 }
+    let traffic = JSON.parse(localStorage.getItem('trafficUsage') || '{}');
+    const currentUsername = localStorage.getItem('currentUsername');  // 当前登录用户名
+    let trafficUsage = traffic[currentUsername] || 0;                // 当前用户流量使用量（GB）
 
-    // 页面加载时显示用户名和更新进度条
+    // ==================== 页面初始化 ====================
     window.addEventListener('DOMContentLoaded', function() {
-        // 显示用户名
+        // 显示当前登录用户名
         const userNameElement = document.getElementById('userName');
         const currentUsername = localStorage.getItem('currentUsername');
         
@@ -103,59 +109,106 @@
             userNameElement.textContent = currentUsername;
         }
         
-        // 更新进度条
+        // 初始化进度条显示
         updateProgressBar();
         
-        // 启动时间更新
+        // 启动时间更新功能
         timeUpdate();
+
+        // 启动流量统计功能
+        trafficUpdate();
     });
 
-    // 时间更新函数
+    // ==================== 时间更新功能 ====================
+    // 计算并显示在线时长
     function computeTime(){
-        const currentTime=Date.now();
-        const passedTime=currentTime-startTime;
-        const hours=Math.floor(passedTime/(1000*60*60));
-        const minutes=Math.floor((passedTime%(1000*60*60))/(1000*60));
-        const seconds=Math.floor((passedTime-hours*(1000*60*60)-minutes*(1000*60))/1000);
-
-        const Time =String(hours).padStart(2,'0')+':'+String(minutes).padStart(2,'0')+':'+String(seconds).padStart(2,'0');
+        const currentTime = Date.now();
+        const passedTime = currentTime - startTime;
         
-        // 在函数内部重新获取元素
+        // 计算小时、分钟、秒数
+        const hours = Math.floor(passedTime / (1000 * 60 * 60));
+        const minutes = Math.floor((passedTime % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((passedTime - hours * (1000 * 60 * 60) - minutes * (1000 * 60)) / 1000);
+
+        // 格式化为 HH:MM:SS 格式
+        const Time = String(hours).padStart(2, '0') + ':' + String(minutes).padStart(2, '0') + ':' + String(seconds).padStart(2, '0');
+        
+        // 更新页面显示
         const timeElement = document.querySelector('.online_time');
         if(timeElement){
-            timeElement.textContent=Time;
+            timeElement.textContent = Time;
         }
     }
+    
+    // 启动时间更新定时器
     function timeUpdate(){
-        const timeElement=document.querySelector('.online_time');
+        const timeElement = document.querySelector('.online_time');
         if(timeElement){
-            timeElement.textContent='00:00:00';
+            timeElement.textContent = '00:00:00';  // 初始化为00:00:00
         }   
-        timeInterval = setInterval(computeTime, 1000);
+        timeInterval = setInterval(computeTime, 1000);  // 每秒更新一次
     }
-    // 更新进度条函数
+
+    // ==================== 流量统计功能 ====================
+    // 计算并更新流量使用量
+    function computeTraffic(){
+        // 每秒增加3.33GB流量，最大限制50GB
+        if(trafficUsage < 50){
+            trafficUsage += 3.33;
+        }
+        else{
+            trafficUsage = 50.00;  // 超过50GB时固定为50GB
+        }
+        
+        // 保存到localStorage，格式：{ "用户名": 流量值 }
+        traffic[currentUsername] = trafficUsage;
+        localStorage.setItem('trafficUsage', JSON.stringify(traffic));
+    }
+
+    // 初始化流量显示并启动流量统计
+    function trafficUpdate(){
+        // 显示当前保存的流量数据（保留两位小数）
+        const trafficElement = document.querySelector('.sum_bytes');
+        if(trafficElement){
+            trafficElement.textContent = trafficUsage.toFixed(2) + ' GB';
+        }
+        
+        // 启动流量统计定时器，每秒更新一次
+        trafficInterval = setInterval(computeTraffic, 1000);
+    }
+    
+    // ==================== 进度条更新功能 ====================
+    // 根据流量使用量更新进度条显示
     function updateProgressBar() {
         const sumBytesElement = document.querySelector('.sum_bytes');
         const progressFill = document.querySelector('.progress-fill');
         
         if (sumBytesElement && progressFill) {
-            const usageText = sumBytesElement.textContent;
-            const usageGB = parseFloat(usageText);
-            const maxGB = 50; // 最大50GB
+            // 计算进度百分比（流量使用量 / 最大50GB * 100）
+            const usageGB = trafficUsage;
+            const maxGB = 50; // 最大流量限制50GB
             const percentage = Math.min((usageGB / maxGB) * 100, 100);
             
+            // 更新进度条宽度
             progressFill.style.width = percentage + '%';
         }
     }
 
-    //登出按钮
+    // ==================== 登出功能 ====================
+    // 登出按钮点击事件处理
     document.querySelector('.btn-logout').addEventListener('click', function() {
-        // 清除定时器
+        // 清除所有定时器，防止内存泄漏
         if (timeInterval) {
             clearInterval(timeInterval);
         }
-        // 清除localStorage中的当前用户名（但保留注册用户信息）
+        if (trafficInterval) {
+            clearInterval(trafficInterval);
+        }
+        
+        // 清除当前用户名，但保留注册用户信息和流量数据
         localStorage.removeItem('currentUsername');
+        
+        // 跳转回登录页面
         window.location.href = '../index.html';
     });
 </script>

@@ -139,38 +139,46 @@
         const usernameInput = document.querySelector('input[name="username"]');
         const accountInstruction = document.getElementById('accountInstruction');
 
-        // 点击输入框时隐藏instruction，之后不再显示
+        // 用户名输入框获得焦点时隐藏账户说明
         usernameInput.addEventListener('focus', function() {
             accountInstruction.classList.add('hidden');
         });
 
+        // 登录按钮点击事件处理
         document.querySelector('.btn-login').addEventListener('click', function() {
-        const username = document.querySelector('input[name="username"]').value;
-        const password = document.querySelector('input[name="password"]').value;
-        const domain = document.querySelector('input[name="domain"]:checked').value;
-        
-        
+            // 获取用户输入的用户名、密码和域名
+            const username = document.querySelector('input[name="username"]').value;
+            const password = document.querySelector('input[name="password"]').value;
+            const domain = document.querySelector('input[name="domain"]:checked').value;
+            
+            // 验证用户名和密码是否已填写
+            if (username && password) {
+                // 从localStorage获取已注册用户信息
+                const registered = JSON.parse(localStorage.getItem('registeredUsers') || '{}');
 
-        if (username && password) {
-            const registered = JSON.parse(localStorage.getItem('registeredUsers') || '{}');
-
-            if (registered[username]) {
-                if (registered[username] === password) {
+                // 检查用户是否已注册
+                if (registered[username]) {
+                    // 用户已存在，验证密码
+                    if (registered[username] === password) {
+                        // 密码正确，保存当前用户名并跳转到成功页面
+                        localStorage.setItem('currentUsername', username);
+                        window.location.href = 'hw1/index_success.html';
+                    } else {
+                        // 密码错误，显示错误提示
+                        alert('密码错误');
+                    }
+                } else {
+                    // 新用户，自动注册并保存用户信息
+                    registered[username] = password;
+                    localStorage.setItem('registeredUsers', JSON.stringify(registered));
                     localStorage.setItem('currentUsername', username);
                     window.location.href = 'hw1/index_success.html';
-                } else {
-                    alert('密码错误');
                 }
             } else {
-                registered[username] = password;
-                localStorage.setItem('registeredUsers', JSON.stringify(registered));
-                localStorage.setItem('currentUsername', username);
-                window.location.href = 'hw1/index_success.html';
+                // 用户名或密码为空，显示提示信息
+                alert('请输入用户名和密码');
             }
-        } else {
-            alert('请输入用户名和密码');
-        }
-    });
+        });
     </script>
 </body>
 </html>
